@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { Presentation, PresentationFile } from "@oai/artifact-tool";
 
-const ROOT = "/Users/ahmadataka/Documents/Codex project/sma-teladan-unique-value";
+const ROOT = "/Users/ahmadataka/Documents/Codex project/SMA Teladan/unique-value-teladan";
 const FINAL = path.join(ROOT, "presentations", "materi-kelas-x-gen-ai-dan-penggunaan-bijak.pptx");
 const QA_DIR = path.join(ROOT, "tmp_check_gen_ai_x_pptx");
 const LOGO = "/Users/ahmadataka/Documents/Codex project/SMA Teladan/academic-track-teladan/assets/logo-sma-teladan-yogyakarta.png";
@@ -73,39 +73,36 @@ function addFooter(slide, number) {
 function addHeaderBand(slide, title) {
   slide.shapes.add({
     geometry: "rect",
-    position: { left: FRAME.left, top: FRAME.top, width: 1128, height: 56 },
+    position: { left: FRAME.left, top: FRAME.top, width: 980, height: 56 },
     fill: COLORS.blue,
     line: { style: "solid", fill: "none", width: 0 },
   });
-  addText(slide, title, FRAME.left + 18, FRAME.top + 10, 760, 34, {
+  addText(slide, title, FRAME.left + 18, FRAME.top + 10, 860, 34, {
     size: 32,
     bold: true,
     color: COLORS.white,
   });
 }
 
-function addBulletList(slide, items, left, top, width, fontSize = 21, gap = 16) {
+function addBulletList(slide, items, left, top, width, fontSize = 21, gap = 14) {
   let y = top;
   for (const item of items) {
     slide.shapes.add({
       geometry: "ellipse",
-      position: { left, top: y + 9, width: 10, height: 10 },
+      position: { left, top: y + 8, width: 10, height: 10 },
       fill: COLORS.navy,
       line: { style: "solid", fill: "none", width: 0 },
     });
-    addText(slide, item, left + 22, y, width - 22, fontSize * 1.9, {
+    addText(slide, item, left + 22, y, width - 22, fontSize * 2.0, {
       size: fontSize,
       color: COLORS.ink,
     });
-    y += fontSize * 1.9 + gap;
+    y += fontSize * 2.0 + gap;
   }
 }
 
 function addSourceNotes(slide, lines) {
-  slide.speakerNotes.textFrame.setText([
-    "[Sources]",
-    ...lines,
-  ]);
+  slide.speakerNotes.textFrame.setText(["[Sources]", ...lines]);
   slide.speakerNotes.setVisible(true);
 }
 
@@ -116,27 +113,6 @@ async function main() {
   const presentation = Presentation.create({
     slideSize: { width: W, height: H },
   });
-  presentation.theme.colorScheme = {
-    name: "Teladan Gen AI",
-    themeColors: {
-      accent1: COLORS.blue,
-      accent2: COLORS.gold,
-      accent3: "#5F87A2",
-      accent4: "#A6C4D8",
-      accent5: "#345D7A",
-      accent6: "#6F8CA0",
-      bg1: COLORS.white,
-      bg2: COLORS.sky2,
-      tx1: COLORS.ink,
-      tx2: COLORS.muted,
-      dk1: "#000000",
-      dk2: COLORS.navy,
-      lt1: COLORS.white,
-      lt2: "#E5EEF5",
-      hlink: "#2563EB",
-      folHlink: "#7C3AED",
-    },
-  };
 
   {
     const slide = presentation.slides.add();
@@ -144,52 +120,52 @@ async function main() {
     addLogo(slide);
     slide.shapes.add({
       geometry: "rect",
-      position: { left: 76, top: 114, width: 490, height: 404 },
+      position: { left: 76, top: 114, width: 500, height: 410 },
       fill: COLORS.sky,
       line: { style: "solid", fill: "none", width: 0 },
     });
     slide.shapes.add({
       geometry: "rect",
-      position: { left: 596, top: 114, width: 608, height: 404 },
+      position: { left: 602, top: 114, width: 602, height: 410 },
       fill: COLORS.blue,
       line: { style: "solid", fill: "none", width: 0 },
     });
-    addText(slide, "Materi Kelas X", 116, 174, 360, 54, {
+    addText(slide, "Materi Kelas X", 118, 176, 360, 40, {
       size: 24,
       bold: true,
       color: COLORS.blue,
     });
-    addText(slide, "Mengenal Gen-AI", 112, 230, 400, 120, {
-      size: 50,
+    addText(slide, "Mengenal Gen-AI", 112, 230, 420, 120, {
+      size: 48,
       bold: true,
       color: COLORS.navy,
     });
     addText(
       slide,
-      "Pengantar tentang AI generatif, contoh dekat dengan siswa, dan cara menggunakannya dengan bijak.",
+      "Contoh tools, use case akademik yang baik, strategi prompting, contoh penggunaan buruk, dan etika pemakaiannya.",
       114,
-      372,
-      390,
-      104,
-      { size: 22, color: COLORS.ink },
+      374,
+      410,
+      106,
+      { size: 21, color: COLORS.ink },
     );
     addText(
       slide,
-      "Setelah Revolusi Industri 4.0, kita masuk ke teknologi yang sedang sangat dekat dengan kehidupan belajar siswa: AI yang bisa membantu membuat teks, gambar, ide, dan penjelasan.",
-      636,
-      192,
-      520,
-      176,
-      { size: 24, color: COLORS.white },
-    );
-    addText(
-      slide,
-      "Fokus deck ini:\n• Apa itu Gen-AI\n• Contoh dekat dengan siswa\n• Manfaat dan risiko\n• Penggunaan yang jujur dan bertanggung jawab",
-      636,
-      394,
+      "Di materi ini, AI tidak dibahas sebagai sulap atau pengganti belajar. Fokusnya adalah bagaimana siswa memakai Gen-AI dengan cerdas, jujur, dan bertanggung jawab.",
+      640,
+      174,
       500,
-      128,
-      { size: 20, color: COLORS.white },
+      164,
+      { size: 22, color: COLORS.white },
+    );
+    addText(
+      slide,
+      "Fokus deck:\n• Tool Gen-AI\n• Use case akademik\n• Prompting\n• Contoh buruk\n• Etika penggunaan",
+      640,
+      376,
+      420,
+      156,
+      { size: 18, color: COLORS.white },
     );
     addFooter(slide, 1);
     addSourceNotes(slide, []);
@@ -202,45 +178,46 @@ async function main() {
     addHeaderBand(slide, "Apa Itu Gen-AI?");
     addText(
       slide,
-      "Gen-AI adalah jenis AI yang dapat menghasilkan konten baru berdasarkan pola dari data yang pernah dipelajarinya.",
+      "Gen-AI adalah AI yang dapat menghasilkan konten baru seperti teks, gambar, suara, video, atau kode.",
       96,
       162,
       1080,
-      72,
+      70,
       { size: 28, bold: true, color: COLORS.navy },
     );
     addBulletList(
       slide,
       [
-        "Konten itu bisa berupa teks, gambar, suara, video, atau kode.",
-        "Kalau AI biasa sering dipakai untuk mengenali atau mengelompokkan, Gen-AI dipakai untuk membuat sesuatu yang baru.",
-        "Gen-AI membantu manusia, tetapi tidak benar-benar berpikir seperti manusia.",
-        "Karena bekerja dengan pola dan prediksi, hasilnya bisa berguna tetapi tidak selalu benar.",
+        "Ia bekerja dengan pola dan prediksi dari data yang pernah dipelajarinya.",
+        "Karena itu, hasilnya bisa sangat membantu, tetapi tetap bisa salah atau bias.",
+        "Gen-AI paling tepat dipakai sebagai alat bantu berpikir dan belajar.",
+        "Gen-AI bukan pengganti guru, buku, atau usaha belajar siswa.",
       ],
       102,
-      270,
+      266,
       1020,
       22,
       10,
     );
     slide.shapes.add({
       geometry: "rect",
-      position: { left: 90, top: 560, width: 1088, height: 72 },
+      position: { left: 90, top: 548, width: 1088, height: 82 },
       fill: COLORS.sky,
       line: { style: "solid", fill: "none", width: 0 },
     });
     addText(
       slide,
-      "Gagasan penting: Gen-AI paling tepat dilihat sebagai alat bantu berpikir dan berkarya, bukan sumber kebenaran terakhir.",
-      110,
-      582,
-      1040,
-      36,
+      "Kalimat kunci: AI bisa cepat, tetapi manusia tetap harus berpikir, memilih, dan memeriksa hasilnya.",
+      108,
+      574,
+      1042,
+      34,
       { size: 22, bold: true, color: COLORS.navy, align: "center" },
     );
     addFooter(slide, 2);
     addSourceNotes(slide, [
-      "Google Gemini Help Center (id): https://support.google.com/gemini/answer/13954172?hl=id",
+      "OpenAI Help Center: https://help.openai.com/en/articles/12677804-what-is-chatgpt-faq",
+      "Google Gemini Help: https://support.google.com/gemini/answer/13954172?hl=id",
       "Microsoft AI: https://www.microsoft.com/id-id/ai/ai-101/what-is-generative-ai",
     ]);
   }
@@ -249,69 +226,45 @@ async function main() {
     const slide = presentation.slides.add();
     slide.background.fill = COLORS.white;
     addLogo(slide);
-    addHeaderBand(slide, "Contoh Gen-AI yang Dekat dengan Siswa");
-    slide.shapes.add({
-      geometry: "rect",
-      position: { left: 90, top: 156, width: 520, height: 430 },
-      fill: COLORS.sky2,
-      line: { style: "solid", fill: COLORS.line, width: 1 },
-    });
-    slide.shapes.add({
-      geometry: "rect",
-      position: { left: 648, top: 156, width: 530, height: 430 },
-      fill: COLORS.white,
-      line: { style: "solid", fill: COLORS.line, width: 1 },
-    });
-    addText(slide, "Untuk belajar", 114, 186, 220, 30, {
-      size: 28,
-      bold: true,
-      color: COLORS.navy,
-    });
-    addBulletList(
-      slide,
-      [
-        "Menjelaskan materi dengan bahasa yang lebih sederhana.",
-        "Merangkum artikel atau catatan menjadi poin-poin penting.",
-        "Membantu mencari ide presentasi atau poster.",
-        "Membantu memahami contoh kode atau langkah pemecahan masalah.",
-      ],
-      114,
-      242,
-      450,
-      20,
-      8,
-    );
-    addText(slide, "Untuk kreativitas", 672, 186, 220, 30, {
-      size: 28,
-      bold: true,
-      color: COLORS.navy,
-    });
-    addBulletList(
-      slide,
-      [
-        "Membuat gambar dari deskripsi teks.",
-        "Menyusun draft awal tulisan atau caption.",
-        "Membantu membuat variasi ide konten.",
-        "Memberi contoh struktur narasi atau alur presentasi.",
-      ],
-      672,
-      242,
-      450,
-      20,
-      8,
-    );
+    addHeaderBand(slide, "Contoh Tools Gen-AI");
+    const cards = [
+      ["ChatGPT", "Cocok untuk brainstorming, menjelaskan konsep, merangkum, dan menyusun draft awal."],
+      ["Gemini", "Cocok untuk ide, tanya jawab, ringkasan, dan beberapa alur yang dekat dengan ekosistem Google."],
+      ["Microsoft Copilot", "Cocok untuk membantu kerja berbasis dokumen, ringkasan, dan tugas yang dekat dengan layanan Microsoft."],
+    ];
+    let y = 170;
+    for (const [title, body] of cards) {
+      slide.shapes.add({
+        geometry: "rect",
+        position: { left: 96, top: y, width: 1080, height: 116 },
+        fill: y === 170 ? COLORS.sky2 : COLORS.white,
+        line: { style: "solid", fill: COLORS.line, width: 1 },
+      });
+      addText(slide, title, 122, y + 20, 220, 30, {
+        size: 26,
+        bold: true,
+        color: COLORS.navy,
+      });
+      addText(slide, body, 320, y + 18, 820, 64, {
+        size: 21,
+        color: COLORS.ink,
+      });
+      y += 126;
+    }
     addText(
       slide,
-      "Yang harus dijaga: hasil AI tetap perlu dicek, dipahami, dan diolah ulang dengan bahasa serta pemikiran kalian sendiri.",
+      "Prinsip penting: pilih tool berdasarkan kebutuhan tugas, bukan hanya karena sedang populer.",
       106,
-      614,
+      584,
       1048,
-      34,
+      30,
       { size: 22, bold: true, color: COLORS.blue, align: "center" },
     );
     addFooter(slide, 3);
     addSourceNotes(slide, [
-      "Google Gemini Help Center (id): https://support.google.com/gemini/answer/13954172?hl=id",
+      "ChatGPT product: https://chatgpt.com/",
+      "Gemini app: https://gemini.google.com/app?hl=id",
+      "Microsoft 365 Copilot overview: https://learn.microsoft.com/en-us/microsoft-365/copilot/microsoft-365-copilot-overview",
     ]);
   }
 
@@ -319,123 +272,207 @@ async function main() {
     const slide = presentation.slides.add();
     slide.background.fill = COLORS.white;
     addLogo(slide);
-    addHeaderBand(slide, "Manfaat dan Risiko Gen-AI");
+    addHeaderBand(slide, "Use Case Akademik yang Baik");
     slide.shapes.add({
       geometry: "rect",
-      position: { left: 96, top: 164, width: 500, height: 56 },
-      fill: COLORS.blue,
-      line: { style: "solid", fill: "none", width: 0 },
-    });
-    slide.shapes.add({
-      geometry: "rect",
-      position: { left: 620, top: 164, width: 556, height: 56 },
-      fill: COLORS.blue,
-      line: { style: "solid", fill: "none", width: 0 },
-    });
-    addText(slide, "Manfaat", 116, 176, 240, 30, {
-      size: 24,
-      bold: true,
-      color: COLORS.white,
-    });
-    addText(slide, "Risiko yang Perlu Diwaspadai", 640, 176, 430, 30, {
-      size: 24,
-      bold: true,
-      color: COLORS.white,
-    });
-    slide.shapes.add({
-      geometry: "rect",
-      position: { left: 96, top: 220, width: 500, height: 304 },
+      position: { left: 92, top: 164, width: 520, height: 396 },
       fill: COLORS.sky2,
       line: { style: "solid", fill: COLORS.line, width: 1 },
     });
     slide.shapes.add({
       geometry: "rect",
-      position: { left: 620, top: 220, width: 556, height: 304 },
+      position: { left: 644, top: 164, width: 532, height: 396 },
       fill: COLORS.white,
       line: { style: "solid", fill: COLORS.line, width: 1 },
+    });
+    addText(slide, "Bantuan yang sehat", 118, 190, 260, 30, {
+      size: 28,
+      bold: true,
+      color: COLORS.navy,
     });
     addBulletList(
       slide,
       [
-        "Membantu mencari ide awal.",
-        "Membantu merangkum dan menjelaskan materi.",
-        "Membantu membuat draft awal.",
-        "Mempercepat pekerjaan tertentu.",
+        "Menjelaskan konsep dengan bahasa lebih sederhana.",
+        "Merangkum catatan yang sudah dibuat siswa.",
+        "Membuat soal latihan dan kunci jawaban.",
+        "Membantu membuat kerangka presentasi.",
       ],
-      122,
-      244,
-      432,
+      118,
+      240,
+      440,
       20,
       8,
     );
+    addText(slide, "Contoh konkret", 670, 190, 240, 30, {
+      size: 28,
+      bold: true,
+      color: COLORS.navy,
+    });
     addBulletList(
       slide,
       [
-        "Jawaban bisa salah tetapi terdengar meyakinkan.",
-        "Siswa bisa terlalu bergantung dan malas berpikir.",
-        "Ada risiko plagiarisme jika menyalin mentah-mentah.",
-        "Data pribadi bisa tidak aman jika dibagikan sembarangan.",
+        "“Jelaskan fotosintesis untuk siswa kelas X dalam 5 poin.”",
+        "“Buat 5 soal latihan dari materi Revolusi Industri 4.0.”",
+        "“Rapikan outline presentasi saya jadi 3 slide utama.”",
+        "“Tolong cek apakah paragraf saya sudah jelas dan runtut.”",
       ],
-      646,
-      244,
-      486,
+      670,
+      240,
+      448,
       20,
       8,
     );
     addText(
       slide,
-      "Kesimpulan slide ini: Gen-AI berguna jika dipakai untuk membantu belajar, tetapi berbahaya jika dipakai tanpa kejujuran dan pemeriksaan ulang.",
-      110,
-      546,
+      "Ukuran sederhananya: AI membantu proses belajar, bukan menggantikan proses berpikir.",
+      106,
+      594,
       1048,
-      60,
+      28,
       { size: 22, bold: true, color: COLORS.navy, align: "center" },
     );
     addFooter(slide, 4);
-    addSourceNotes(slide, [
-      "Microsoft AI: https://www.microsoft.com/id-id/ai/ai-101/what-is-generative-ai",
-      "Google Gemini Help Center (id): https://support.google.com/gemini/answer/13954172?hl=id",
-    ]);
+    addSourceNotes(slide, []);
   }
 
   {
     const slide = presentation.slides.add();
     slide.background.fill = COLORS.white;
     addLogo(slide);
-    addHeaderBand(slide, "Cara Memakai Gen-AI dengan Bijak");
+    addHeaderBand(slide, "Strategi Prompting");
+    addText(slide, "Prompt yang baik biasanya punya 4 unsur:", 98, 160, 420, 34, {
+      size: 28,
+      bold: true,
+      color: COLORS.navy,
+    });
     addBulletList(
       slide,
       [
-        "Gunakan untuk membantu memahami, bukan untuk mencontek mentah-mentah.",
-        "Selalu cek ulang fakta penting dari buku, guru, atau sumber tepercaya.",
-        "Jangan masukkan data pribadi, kata sandi, atau informasi sensitif.",
-        "Kalau memakai hasil AI untuk tugas, olah kembali dengan pemahaman dan bahasa kalian sendiri.",
-        "Anggap AI sebagai alat diskusi awal, bukan pengganti nalar dan kejujuran.",
+        "Tujuan: saya ingin AI membantu untuk apa?",
+        "Konteks: topiknya apa, level siswa berapa?",
+        "Format: saya ingin poin, tabel, atau contoh soal?",
+        "Revisi: kalau hasil belum pas, minta diperbaiki lagi.",
       ],
-      106,
-      170,
-      1020,
-      23,
-      12,
+      102,
+      234,
+      480,
+      19,
+      8,
     );
     slide.shapes.add({
       geometry: "rect",
-      position: { left: 132, top: 536, width: 1010, height: 84 },
+      position: { left: 644, top: 164, width: 532, height: 226 },
+      fill: COLORS.sky,
+      line: { style: "solid", fill: "none", width: 0 },
+    });
+    addText(slide, "Prompt lebih baik", 670, 188, 220, 26, {
+      size: 22,
+      bold: true,
+      color: COLORS.navy,
+    });
+    addText(
+      slide,
+      "“Jelaskan fotosintesis untuk siswa kelas X dalam 5 poin singkat, lalu buat 3 pertanyaan latihan beserta jawabannya.”",
+      670,
+      236,
+      460,
+      94,
+      { size: 18, color: COLORS.ink },
+    );
+    slide.shapes.add({
+      geometry: "rect",
+      position: { left: 644, top: 406, width: 532, height: 150 },
+      fill: COLORS.white,
+      line: { style: "solid", fill: COLORS.line, width: 1 },
+    });
+    addText(slide, "Prompt kurang efektif", 670, 430, 240, 26, {
+      size: 22,
+      bold: true,
+      color: COLORS.navy,
+    });
+    addText(slide, "“Jelaskan fotosintesis.”", 670, 478, 300, 30, {
+      size: 18,
+      color: COLORS.ink,
+    });
+    addFooter(slide, 5);
+    addSourceNotes(slide, []);
+  }
+
+  {
+    const slide = presentation.slides.add();
+    slide.background.fill = COLORS.white;
+    addLogo(slide);
+    addHeaderBand(slide, "Contoh Buruk dan Etika Penggunaan");
+    slide.shapes.add({
+      geometry: "rect",
+      position: { left: 94, top: 164, width: 500, height: 344 },
+      fill: COLORS.white,
+      line: { style: "solid", fill: COLORS.line, width: 1 },
+    });
+    slide.shapes.add({
+      geometry: "rect",
+      position: { left: 626, top: 164, width: 550, height: 344 },
+      fill: COLORS.sky2,
+      line: { style: "solid", fill: COLORS.line, width: 1 },
+    });
+    addText(slide, "Penggunaan yang buruk", 120, 188, 280, 28, {
+      size: 24,
+      bold: true,
+      color: COLORS.navy,
+    });
+    addBulletList(
+      slide,
+      [
+        "Menyalin jawaban AI mentah-mentah.",
+        "Memakai AI untuk mencontek ujian.",
+        "Tidak memeriksa ulang fakta penting.",
+        "Memasukkan data pribadi atau dokumen sensitif.",
+      ],
+      120,
+      246,
+      420,
+      18,
+      8,
+    );
+    addText(slide, "Etika yang harus dijaga", 652, 188, 300, 28, {
+      size: 24,
+      bold: true,
+      color: COLORS.navy,
+    });
+    addBulletList(
+      slide,
+      [
+        "Jujur tentang bantuan AI yang dipakai.",
+        "Verifikasi informasi dengan sumber tepercaya.",
+        "Gunakan AI untuk belajar, bukan menggantikan usaha.",
+        "Hormati privasi dan karya orang lain.",
+      ],
+      652,
+      246,
+      456,
+      18,
+      8,
+    );
+    slide.shapes.add({
+      geometry: "rect",
+      position: { left: 94, top: 534, width: 1082, height: 82 },
       fill: COLORS.sky,
       line: { style: "solid", fill: "none", width: 0 },
     });
     addText(
       slide,
-      "Sikap yang paling penting adalah jujur. Teknologi boleh membantu, tetapi pemahaman tetap harus tumbuh dari kalian sendiri.",
-      164,
+      "Gen-AI boleh membantu pekerjaan, tetapi karakter tetap dibentuk oleh kejujuran dan tanggung jawab manusia.",
+      120,
       560,
-      950,
-      34,
-      { size: 24, bold: true, color: COLORS.navy, align: "center" },
+      1028,
+      28,
+      { size: 22, bold: true, color: COLORS.navy, align: "center" },
     );
-    addFooter(slide, 5);
+    addFooter(slide, 6);
     addSourceNotes(slide, [
-      "Google Gemini Help Center (id): https://support.google.com/gemini/answer/13954172?hl=id",
+      "Google Gemini app notice: https://gemini.google.com/app?hl=id",
+      "Google Gemini Help image generation policy: https://support.google.com/gemini/answer/14286560?p=b_gen_img",
     ]);
   }
 
@@ -446,54 +483,51 @@ async function main() {
     addHeaderBand(slide, "Tugas Kelompok");
     addText(
       slide,
-      "Memakai Gen-AI untuk Belajar dengan Cerdas dan Bertanggung Jawab",
+      "Menilai Penggunaan Gen-AI yang Cerdas dan Etis",
       96,
       162,
       1080,
-      48,
-      { size: 28, bold: true, color: COLORS.navy },
+      42,
+      { size: 30, bold: true, color: COLORS.navy },
     );
     addBulletList(
       slide,
       [
-        "Pilih satu contoh penggunaan Gen-AI yang menurut kalian berguna untuk pelajar.",
-        "Jelaskan bagaimana alat itu bisa membantu belajar.",
-        "Sebutkan minimal 2 manfaat jika dipakai dengan benar.",
-        "Sebutkan minimal 2 risiko jika dipakai tanpa bijak.",
-        "Tuliskan aturan penggunaan yang jujur dan bertanggung jawab di sekolah.",
+        "Pilih satu tool Gen-AI: ChatGPT, Gemini, atau Copilot.",
+        "Jelaskan fungsi sederhananya.",
+        "Berikan 2 contoh penggunaan yang baik untuk pelajar.",
+        "Berikan 2 contoh penggunaan yang buruk atau tidak etis.",
+        "Tulis 1 prompt yang baik dan 1 prompt yang terlalu umum atau buruk.",
+        "Rumuskan 3 aturan etika penggunaan Gen-AI di sekolah.",
       ],
       104,
-      242,
+      230,
       1030,
-      22,
-      10,
+      21,
+      8,
     );
     slide.shapes.add({
       geometry: "rect",
-      position: { left: 96, top: 494, width: 1080, height: 126 },
+      position: { left: 96, top: 512, width: 1080, height: 112 },
       fill: COLORS.sky2,
       line: { style: "solid", fill: COLORS.line, width: 1 },
     });
-    addText(slide, "Pengumpulan tugas", 122, 520, 260, 28, {
+    addText(slide, "Pengumpulan tugas", 122, 532, 260, 24, {
       size: 20,
       bold: true,
       color: COLORS.blue,
     });
-    addText(slide, "Kirim ke: ataka.ahmad@gmail.com", 122, 550, 420, 24, {
-      size: 19,
+    addText(slide, "Kirim ke: ataka.ahmad@gmail.com", 122, 560, 430, 24, {
+      size: 18,
+      bold: true,
       color: "#2563EB",
-      bold: true,
     });
-    addText(slide, "Subject: SMA Teladan X - Tugas Gen-AI - [Nama Kelompok]", 122, 578, 780, 24, {
-      size: 18,
+    addText(slide, "Subject: SMA Teladan X - Tugas Gen-AI - [Nama Kelompok]", 122, 586, 790, 22, {
+      size: 17,
       bold: true,
       color: COLORS.ink,
     });
-    addText(slide, "Lampirkan 1 lembar jawaban ringkas atau 1 slide sederhana.", 122, 602, 760, 22, {
-      size: 18,
-      color: COLORS.ink,
-    });
-    addFooter(slide, 6);
+    addFooter(slide, 7);
     addSourceNotes(slide, []);
   }
 

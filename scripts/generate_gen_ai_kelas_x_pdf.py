@@ -18,7 +18,7 @@ from reportlab.platypus import (
 
 
 OUTPUT_PATH = (
-    Path("/Users/ahmadataka/Documents/SMA Teladan/output/pdf")
+    Path("/Users/ahmadataka/Documents/Codex project/SMA Teladan/unique-value-teladan/pdf")
     / "materi-kelas-x-gen-ai-dan-penggunaan-bijak.pdf"
 )
 
@@ -68,8 +68,8 @@ def build_styles():
             name="BodyTeladan",
             parent=styles["BodyText"],
             fontName="Helvetica",
-            fontSize=11,
-            leading=16,
+            fontSize=10.8,
+            leading=15.5,
             textColor=colors.HexColor("#1F2933"),
             alignment=TA_JUSTIFY,
             spaceAfter=6,
@@ -80,7 +80,7 @@ def build_styles():
             name="CalloutTeladan",
             parent=styles["BodyText"],
             fontName="Helvetica-Bold",
-            fontSize=11,
+            fontSize=10.8,
             leading=15,
             textColor=colors.HexColor("#16324F"),
             backColor=colors.HexColor("#EAF3F8"),
@@ -93,8 +93,8 @@ def build_styles():
             name="TableCellTeladan",
             parent=styles["BodyText"],
             fontName="Helvetica",
-            fontSize=9.3,
-            leading=11.4,
+            fontSize=9.1,
+            leading=11.2,
             textColor=colors.HexColor("#1F2933"),
         )
     )
@@ -103,8 +103,8 @@ def build_styles():
             name="TableHeadTeladan",
             parent=styles["BodyText"],
             fontName="Helvetica-Bold",
-            fontSize=9.6,
-            leading=11.5,
+            fontSize=9.4,
+            leading=11.1,
             textColor=colors.white,
         )
     )
@@ -113,8 +113,8 @@ def build_styles():
             name="SmallTeladan",
             parent=styles["BodyText"],
             fontName="Helvetica",
-            fontSize=9.5,
-            leading=13,
+            fontSize=9.2,
+            leading=12.4,
             textColor=colors.HexColor("#425466"),
             spaceAfter=4,
         )
@@ -166,13 +166,13 @@ def build_pdf():
     story.append(Paragraph("Materi Kelas X: Mengenal Gen-AI", styles["TitleTeladan"]))
     story.append(
         Paragraph(
-            "Pengantar tentang AI generatif, contoh dekat dengan siswa, dan cara menggunakannya dengan bijak",
+            "Contoh tools, strategi prompting, use case akademik yang baik, contoh penggunaan buruk, dan etika pemakaiannya",
             styles["SubtitleTeladan"],
         )
     )
     story.append(
         Paragraph(
-            "Halo teman-teman. Setelah mengenal perubahan dunia pada Revolusi Industri 4.0, sekarang kita masuk ke salah satu teknologi yang sedang sangat sering dibicarakan: <i>Generative AI</i> atau Gen-AI. Teknologi ini bisa membantu manusia membuat teks, gambar, suara, bahkan ide. Karena itu, penting bagi kalian untuk mengenalnya dengan kepala yang terbuka dan sikap yang kritis.",
+            "Halo teman-teman. Di materi ini kita tidak hanya akan membahas apa itu <i>Generative AI</i>, tetapi juga bagaimana memakainya dengan cara yang benar. Kalian akan melihat contoh tool yang sedang populer, contoh penggunaan yang membantu belajar, contoh penggunaan yang buruk, dan sikap etis yang perlu dijaga saat memakai Gen-AI.",
             styles["CalloutTeladan"],
         )
     )
@@ -181,31 +181,17 @@ def build_pdf():
     story.append(
         bullet_list(
             [
-                "Kalian memahami arti dasar <i>Generative AI</i> dengan bahasa sederhana.",
-                "Kalian bisa membedakan AI biasa dan AI yang bersifat generatif.",
-                "Kalian mengenali contoh penggunaan Gen-AI dalam belajar dan kehidupan sehari-hari.",
-                "Kalian memahami manfaat, risiko, dan batasan Gen-AI.",
-                "Kalian mulai membangun kebiasaan memakai teknologi secara jujur, cerdas, dan bertanggung jawab.",
+                "Kalian memahami arti dasar Gen-AI dengan bahasa sederhana.",
+                "Kalian mengenali beberapa tool Gen-AI yang sering dipakai siswa dan guru.",
+                "Kalian memahami contoh penggunaan Gen-AI yang baik untuk belajar.",
+                "Kalian mengenali strategi <i>prompting</i> agar hasil AI lebih berguna.",
+                "Kalian memahami contoh penggunaan yang buruk dan etika pemakaiannya.",
             ],
             styles["BodyTeladan"],
         )
     )
 
-    story.append(Paragraph("2. Pembuka Kelas", styles["SectionTeladan"]))
-    story.append(
-        Paragraph(
-            "Coba pikirkan: pernahkah kalian melihat AI yang bisa menjawab pertanyaan, menulis paragraf, membuat gambar dari perintah teks, atau merangkum catatan? Kalau iya, kalian sudah bersentuhan dengan Gen-AI. Teknologi ini terasa dekat karena hasilnya bisa langsung kita lihat dan pakai.",
-            styles["BodyTeladan"],
-        )
-    )
-    story.append(
-        Paragraph(
-            "<b>Pancingan guru:</b> \"Kalau ada AI yang bisa membantu belajar, menurut kalian bantuan seperti apa yang paling berguna: menjelaskan materi, merangkum, membuat gambar, atau memberi ide?\"",
-            styles["BodyTeladan"],
-        )
-    )
-
-    story.append(Paragraph("3. Apa Itu Gen-AI?", styles["SectionTeladan"]))
+    story.append(Paragraph("2. Apa Itu Gen-AI?", styles["SectionTeladan"]))
     story.append(
         Paragraph(
             "<i>Generative AI</i> adalah jenis AI yang dapat menghasilkan konten baru berdasarkan pola dari data yang pernah dipelajarinya. Konten itu bisa berupa teks, gambar, suara, video, atau kode. Jadi, jika AI biasa sering dipakai untuk mengenali atau mengelompokkan, Gen-AI dipakai untuk <b>membuat</b> sesuatu yang baru.",
@@ -214,50 +200,26 @@ def build_pdf():
     )
     story.append(
         Paragraph(
-            "Contohnya, ketika kalian mengetik pertanyaan lalu AI menjawab dengan paragraf, atau ketika seseorang menulis perintah lalu AI membuat gambar sesuai deskripsi, itu adalah contoh kerja Gen-AI.",
-            styles["BodyTeladan"],
-        )
-    )
-    story.append(
-        Paragraph(
-            "Namun, penting diingat: Gen-AI tidak benar-benar \"mengerti\" seperti manusia. Ia bekerja dengan pola, prediksi, dan kemungkinan kata atau bentuk yang paling sesuai. Karena itu, hasilnya bisa membantu, tetapi tidak selalu benar.",
+            "Namun, Gen-AI tidak benar-benar berpikir seperti manusia. Ia bekerja dengan pola dan prediksi. Karena itu, hasilnya bisa cepat dan berguna, tetapi tetap bisa salah, bias, atau tidak sesuai konteks.",
             styles["BodyTeladan"],
         )
     )
 
-    story.append(Paragraph("4. Contoh Gen-AI yang Dekat dengan Siswa", styles["SectionTeladan"]))
-    story.append(
-        bullet_list(
+    story.append(Paragraph("3. Contoh Tools Gen-AI", styles["SectionTeladan"]))
+    tools_table = Table(
+        wrap_table(
             [
-                "AI yang membantu menjelaskan materi pelajaran dengan bahasa yang lebih sederhana.",
-                "AI yang merangkum artikel atau catatan menjadi poin-poin penting.",
-                "AI pembuat gambar dari deskripsi teks.",
-                "AI yang membantu membuat ide judul, poster, atau presentasi.",
-                "AI yang membantu menyusun contoh kode sederhana atau langkah pemecahan masalah.",
+                ["Tool", "Kegunaan Sederhana", "Link"],
+                ["ChatGPT", "Membantu brainstorming, menjelaskan konsep, merangkum, dan menyusun draft.", "https://chatgpt.com/"],
+                ["Gemini", "Membantu ide, ringkasan, tanya jawab, dan beberapa integrasi dengan layanan Google.", "https://gemini.google.com/app?hl=id"],
+                ["Microsoft Copilot", "Membantu menulis, merangkum, dan bekerja dengan dokumen atau tugas berbasis Microsoft.", "https://copilot.microsoft.com/"],
             ],
-            styles["BodyTeladan"],
-        )
+            styles["TableHeadTeladan"],
+            styles["TableCellTeladan"],
+        ),
+        colWidths=[3.0 * cm, 8.9 * cm, 4.0 * cm],
     )
-    story.append(
-        Paragraph(
-            "<b>Contoh dekat dengan kelas:</b> ketika kalian bingung dengan satu topik, Gen-AI bisa dipakai untuk meminta penjelasan ulang dengan gaya yang lebih mudah dipahami. Tetapi, kalian tetap perlu mengecek apakah penjelasan itu sesuai dengan materi dari guru dan buku pelajaran.",
-            styles["BodyTeladan"],
-        )
-    )
-
-    story.append(Paragraph("5. Manfaat dan Risiko Gen-AI", styles["SectionTeladan"]))
-    benefit_risk_data = [
-        ["Manfaat", "Risiko yang Perlu Diwaspadai"],
-        ["Membantu mencari ide awal", "Jawaban bisa salah atau meyakinkan padahal keliru"],
-        ["Membantu merangkum dan menjelaskan materi", "Siswa bisa menjadi terlalu bergantung"],
-        ["Membantu membuat visual atau draft awal", "Ada risiko plagiarisme atau menyalin mentah-mentah"],
-        ["Mempercepat pekerjaan tertentu", "Data pribadi atau tugas sensitif bisa tidak aman jika dibagikan sembarangan"],
-    ]
-    benefit_risk_table = Table(
-        wrap_table(benefit_risk_data, styles["TableHeadTeladan"], styles["TableCellTeladan"]),
-        colWidths=[8.1 * cm, 8.1 * cm],
-    )
-    benefit_risk_table.setStyle(
+    tools_table.setStyle(
         TableStyle(
             [
                 ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#24577A")),
@@ -273,74 +235,134 @@ def build_pdf():
             ]
         )
     )
-    story.append(benefit_risk_table)
+    story.append(tools_table)
     story.append(
         Paragraph(
-            "Karena itu, Gen-AI paling baik dipakai sebagai <b>alat bantu berpikir</b>, bukan pengganti akal, kejujuran, atau usaha belajar kalian sendiri.",
+            "Kalian tidak harus memakai semua tool itu. Yang penting adalah memahami bahwa tiap tool punya kekuatan, keterbatasan, dan konteks penggunaan masing-masing.",
             styles["BodyTeladan"],
         )
     )
 
-    story.append(Paragraph("6. Cara Memakai Gen-AI dengan Bijak", styles["SectionTeladan"]))
+    story.append(Paragraph("4. Use Case Akademik yang Baik", styles["SectionTeladan"]))
     story.append(
         bullet_list(
             [
-                "Gunakan untuk membantu memahami, bukan untuk mencontek mentah-mentah.",
-                "Selalu cek ulang fakta penting dari buku, guru, atau sumber tepercaya.",
-                "Jangan masukkan data pribadi, kata sandi, atau informasi sensitif.",
-                "Kalau memakai hasil AI untuk tugas, olah kembali dengan pemahaman dan bahasa kalian sendiri.",
-                "Anggap AI sebagai alat diskusi awal, bukan sumber kebenaran terakhir.",
+                "<b>Meminta penjelasan ulang konsep.</b> Misalnya: \"Jelaskan Revolusi Industri 4.0 dengan bahasa siswa kelas X.\"",
+                "<b>Menyusun ringkasan dari catatan sendiri.</b> Bukan menyalin penuh dari AI, tetapi memakai AI untuk merapikan poin yang sudah kalian buat.",
+                "<b>Membuat pertanyaan latihan.</b> Misalnya AI diminta membuat 5 soal pilihan ganda dari topik yang sedang dipelajari.",
+                "<b>Membantu membuat kerangka presentasi.</b> Misalnya outline 3 slide untuk topik tertentu.",
+                "<b>Membantu memperbaiki tulisan.</b> Misalnya mengecek struktur, kejelasan, atau pilihan kata dalam esai yang kalian tulis sendiri.",
             ],
             styles["BodyTeladan"],
         )
     )
     story.append(
         Paragraph(
-            "Sikap yang paling penting adalah <b>jujur</b>. Teknologi boleh membantu, tetapi pemahaman tetap harus tumbuh dari kalian sendiri.",
+            "Kunci dari semua contoh yang baik itu adalah: <b>AI membantu proses belajar</b>, bukan menggantikan proses berpikir kalian.",
             styles["CalloutTeladan"],
+        )
+    )
+
+    story.append(Paragraph("5. Strategi Prompting yang Sederhana", styles["SectionTeladan"]))
+    prompt_table = Table(
+        wrap_table(
+            [
+                ["Langkah", "Pertanyaan yang Bisa Kalian Pakai"],
+                ["1. Tentukan tujuan", "Saya ingin AI membantu untuk apa: menjelaskan, merangkum, memberi contoh, atau membuat latihan?"],
+                ["2. Beri konteks", "Topiknya apa, level siswa berapa, dan gaya bahasa seperti apa yang saya butuhkan?"],
+                ["3. Tentukan format hasil", "Apakah saya ingin poin-poin, tabel, contoh soal, atau paragraf singkat?"],
+                ["4. Minta revisi", "Kalau jawabannya terlalu sulit, terlalu panjang, atau kurang jelas, minta AI memperbaikinya."],
+            ],
+            styles["TableHeadTeladan"],
+            styles["TableCellTeladan"],
+        ),
+        colWidths=[3.2 * cm, 12.1 * cm],
+    )
+    prompt_table.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#24577A")),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#B7C5D1")),
+                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.HexColor("#F9FBFC"), colors.HexColor("#EEF5F8")]),
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 6),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+                ("TOPPADDING", (0, 0), (-1, -1), 6),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+            ]
+        )
+    )
+    story.append(prompt_table)
+    story.append(
+        Paragraph(
+            "<b>Contoh prompt yang lebih baik:</b> \"Jelaskan fotosintesis untuk siswa kelas X dalam 5 poin singkat, lalu buat 3 pertanyaan latihan beserta jawabannya.\"",
+            styles["BodyTeladan"],
+        )
+    )
+    story.append(
+        Paragraph(
+            "<b>Contoh prompt yang kurang efektif:</b> \"Jelaskan fotosintesis.\" Prompt ini terlalu umum, jadi hasilnya bisa terlalu panjang atau tidak sesuai kebutuhan.",
+            styles["BodyTeladan"],
         )
     )
 
     story.append(PageBreak())
 
-    story.append(Paragraph("7. Sumber Belajar Tambahan", styles["SectionTeladan"]))
+    story.append(Paragraph("6. Contoh Penggunaan yang Buruk", styles["SectionTeladan"]))
+    story.append(
+        bullet_list(
+            [
+                "Menyalin jawaban AI mentah-mentah lalu mengumpulkannya sebagai tugas pribadi.",
+                "Meminta AI mengerjakan seluruh esai tanpa kalian pahami isinya.",
+                "Memakai AI untuk mencontek saat kuis atau ujian.",
+                "Memasukkan data pribadi, foto sensitif, atau dokumen penting tanpa izin.",
+                "Menganggap jawaban AI pasti benar tanpa memeriksa ulang.",
+            ],
+            styles["BodyTeladan"],
+        )
+    )
     story.append(
         Paragraph(
-            "Kalau kalian ingin membaca atau menonton penjelasan tambahan, berikut beberapa sumber yang mudah dibuka dan cocok untuk pengantar topik ini.",
+            "Kalau AI dipakai seperti itu, yang rusak bukan hanya kualitas belajar, tetapi juga kejujuran akademik dan tanggung jawab pribadi.",
+            styles["CalloutTeladan"],
+        )
+    )
+
+    story.append(Paragraph("7. Etika Penggunaan Gen-AI", styles["SectionTeladan"]))
+    story.append(
+        bullet_list(
+            [
+                "<b>Jujur.</b> Jika AI membantu pekerjaan kalian, jangan berpura-pura semua itu murni hasil tanpa bantuan.",
+                "<b>Verifikasi.</b> Cek kembali fakta penting dari guru, buku, atau sumber tepercaya.",
+                "<b>Jaga privasi.</b> Jangan membagikan data pribadi, nilai, password, atau dokumen sensitif.",
+                "<b>Gunakan untuk belajar.</b> Tujuannya adalah membantu kalian memahami, bukan mematikan usaha berpikir.",
+                "<b>Hormati karya orang lain.</b> Jangan memakai AI untuk plagiarisme atau mengambil karya tanpa tanggung jawab.",
+            ],
+            styles["BodyTeladan"],
+        )
+    )
+
+    story.append(Paragraph("8. Sumber Belajar Tambahan", styles["SectionTeladan"]))
+    story.append(
+        link_paragraph(
+            "OpenAI Help Center - What is ChatGPT?",
+            "https://help.openai.com/en/articles/12677804-what-is-chatgpt-faq",
             styles["BodyTeladan"],
         )
     )
     story.append(
         link_paragraph(
-            "Google - Mempelajari AI generatif",
+            "Google Gemini Help - Learn about generative AI",
             "https://support.google.com/gemini/answer/13954172?hl=id",
             styles["BodyTeladan"],
         )
     )
     story.append(
         link_paragraph(
-            "Microsoft AI - Apa itu AI generatif?",
+            "Microsoft AI - What is generative AI?",
             "https://www.microsoft.com/id-id/ai/ai-101/what-is-generative-ai",
-            styles["BodyTeladan"],
-        )
-    )
-    story.append(
-        link_paragraph(
-            "DW Indonesia - Apa Itu Generative AI?",
-            "https://www.dw.com/id/apa-itu-generative-ai/video-66557921",
-            styles["BodyTeladan"],
-        )
-    )
-
-    story.append(Paragraph("8. Diskusi Singkat di Kelas", styles["SectionTeladan"]))
-    story.append(
-        bullet_list(
-            [
-                "Apa bagian paling menarik dari Gen-AI menurut kalian?",
-                "Kalau Gen-AI bisa membantu belajar, bantuan apa yang paling bermanfaat?",
-                "Kapan penggunaan AI menjadi tidak jujur dalam tugas sekolah?",
-                "Kalau jawaban AI terdengar meyakinkan, mengapa kita tetap perlu memeriksanya?",
-            ],
             styles["BodyTeladan"],
         )
     )
@@ -348,41 +370,37 @@ def build_pdf():
     story.append(Paragraph("9. Penugasan Kelompok", styles["SectionTeladan"]))
     story.append(
         Paragraph(
-            "<b>Judul tugas:</b> Memakai Gen-AI untuk Belajar dengan Cerdas dan Bertanggung Jawab",
-            styles["BodyTeladan"],
-        )
-    )
-    story.append(
-        Paragraph(
-            "Bekerjalah dalam kelompok berisi 4-5 siswa. Pilih satu contoh penggunaan Gen-AI yang menurut kalian berguna untuk pelajar. Kalian boleh memilih AI untuk merangkum, menjelaskan materi, membuat gambar, mencari ide presentasi, atau contoh lain yang relevan.",
+            "<b>Judul tugas:</b> Menilai Penggunaan Gen-AI yang Cerdas dan Etis",
             styles["BodyTeladan"],
         )
     )
     story.append(
         bullet_list(
             [
-                "Jelaskan alat atau penggunaan Gen-AI yang kalian pilih.",
-                "Terangkan bagaimana alat itu bisa membantu pelajar.",
-                "Sebutkan minimal 2 manfaat jika dipakai dengan benar.",
-                "Sebutkan minimal 2 risiko jika dipakai tanpa bijak.",
-                "Tuliskan aturan penggunaan yang jujur dan bertanggung jawab di sekolah.",
+                "Pilih satu tool Gen-AI, misalnya ChatGPT, Gemini, atau Copilot.",
+                "Jelaskan fungsi sederhananya.",
+                "Berikan 2 contoh penggunaan yang baik untuk pelajar.",
+                "Berikan 2 contoh penggunaan yang buruk atau tidak etis.",
+                "Tuliskan 3 aturan penggunaan Gen-AI yang menurut kelompok kalian penting di sekolah.",
+                "Sertakan 2 contoh prompt: satu prompt yang baik dan satu prompt yang terlalu umum atau buruk.",
             ],
             styles["BodyTeladan"],
         )
     )
-
     task_data = [
         ["Format Jawaban Kelompok", ""],
-        ["Contoh penggunaan Gen-AI", ""],
-        ["Manfaat untuk pelajar", ""],
-        ["Risiko yang perlu diwaspadai", ""],
-        ["Aturan penggunaan yang bijak", ""],
-        ["Kesimpulan kelompok", ""],
+        ["Nama tool", ""],
+        ["Contoh penggunaan yang baik", ""],
+        ["Contoh penggunaan yang buruk", ""],
+        ["Contoh prompt yang baik", ""],
+        ["Contoh prompt yang buruk", ""],
+        ["Aturan etika kelompok", ""],
+        ["Kesimpulan", ""],
     ]
     task_table = Table(
         wrap_table(task_data, styles["TableHeadTeladan"], styles["TableCellTeladan"]),
-        colWidths=[6.6 * cm, 9.6 * cm],
-        rowHeights=[0.8 * cm] * len(task_data),
+        colWidths=[6.4 * cm, 9.8 * cm],
+        rowHeights=[0.72 * cm] * len(task_data),
     )
     task_table.setStyle(
         TableStyle(
@@ -400,7 +418,6 @@ def build_pdf():
         )
     )
     story.append(task_table)
-    story.append(Spacer(1, 0.25 * cm))
     story.append(
         Paragraph(
             "<b>Pengumpulan tugas:</b> kirim hasil kelompok ke <link href=\"mailto:ataka.ahmad@gmail.com\" color=\"blue\">ataka.ahmad@gmail.com</link>.<br/><b>Format subject email:</b> <b>SMA Teladan X - Tugas Gen-AI - [Nama Kelompok]</b><br/><b>Isi email singkat:</b> tulis nama anggota kelompok dan lampirkan 1 lembar jawaban ringkas atau 1 slide sederhana.",
@@ -411,19 +428,19 @@ def build_pdf():
     story.append(Paragraph("10. Penutup", styles["SectionTeladan"]))
     story.append(
         Paragraph(
-            "Teman-teman, Gen-AI adalah teknologi yang kuat. Ia bisa membantu manusia belajar, berkarya, dan bekerja lebih cepat. Tetapi justru karena kuat, penggunaannya perlu sikap yang matang. Masa depan tidak hanya membutuhkan orang yang bisa memakai AI, tetapi juga orang yang tetap jujur, kritis, dan bertanggung jawab saat memakainya.",
+            "Teman-teman, Gen-AI adalah teknologi yang kuat. Ia bisa membantu belajar, menulis, merangkum, dan mencari ide. Tetapi justru karena kuat, penggunaannya harus disertai kejujuran, kebiasaan memeriksa ulang, dan tanggung jawab etis. Teknologi yang baik bukan yang membuat kalian berhenti berpikir, tetapi yang membantu kalian berpikir lebih baik.",
             styles["BodyTeladan"],
         )
     )
     story.append(
         Paragraph(
-            "Pertanyaan refleksi akhir: <b>kalau kalian diberi akses ke Gen-AI setiap hari untuk belajar, kebiasaan apa yang harus dijaga supaya AI membantu kalian bertumbuh, bukan membuat kalian malas berpikir?</b>",
+            "Pertanyaan refleksi akhir: <b>kalau kalian memakai Gen-AI untuk belajar setiap hari, aturan apa yang harus kalian pegang supaya AI membantu pertumbuhan kalian, bukan menggantikan usaha kalian?</b>",
             styles["CalloutTeladan"],
         )
     )
     story.append(
         Paragraph(
-            "Catatan: materi ini disusun sebagai lanjutan kelas X setelah pengantar Revolusi Industri 4.0.",
+            "Referensi ringkas materi ini diverifikasi pada Jumat, 31 Juli 2026 dari laman resmi OpenAI, Google, dan Microsoft.",
             styles["SmallTeladan"],
         )
     )
