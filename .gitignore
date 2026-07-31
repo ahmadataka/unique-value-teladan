@@ -1,0 +1,4 @@
+.DS_Store
+*.inspect.ndjson
+tmp/
+tmp_check_*/
