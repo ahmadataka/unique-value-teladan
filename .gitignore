@@ -1,4 +1,6 @@
 .DS_Store
 *.inspect.ndjson
+node_modules
+presentations/test-remote-image.pptx
 tmp/
 tmp_check_*/
